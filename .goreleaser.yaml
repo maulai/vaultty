@@ -1,0 +1,44 @@
+version: 2
+project_name: vaultty
+
+before:
+  hooks:
+    - go mod download
+    # Windows resources: application icon and version info (rsrc_windows_*.syso).
+    - >-
+      go run github.com/tc-hib/go-winres@v0.3.3 simply
+      --arch amd64,arm64
+      --icon assets/icon/vaultty.ico
+      --manifest cli
+      --product-name vaultty
+      --file-description "Encrypted SSH host manager"
+      --copyright "Copyright (c) 2026 maulai"
+      --original-filename vaultty.exe
+      --product-version {{ .Version }}
+      --file-version {{ .Version }}
+
+builds:
+  - env:
+      - CGO_ENABLED=0
+    goos: [linux, darwin, windows]
+    goarch: [amd64, arm64]
+    flags: [-trimpath]
+    ldflags: ["-s -w -X main.version={{ .Version }}"]
+    mod_timestamp: "{{ .CommitTimestamp }}"
+
+archives:
+  - formats: [tar.gz]
+    format_overrides:
+      - goos: windows
+        formats: [zip]
+    name_template: "{{ .ProjectName }}_{{ .Version }}_{{ .Os }}_{{ .Arch }}"
+
+checksum:
+  name_template: checksums.txt
+
+# release-please writes the changelog and release notes.
+changelog:
+  disable: true
+
+release:
+  mode: keep-existing

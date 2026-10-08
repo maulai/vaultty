@@ -1,0 +1,35 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="100%" height="100%">
+  <!-- SSH-Vault – Hauptmotiv (ab 48 px). Farben aus der App-Palette (internal/tui/styles.go). -->
+  <defs>
+    <linearGradient id="neon" x1="48" y1="40" x2="208" y2="216" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#2ae6ff"/>
+      <stop offset="0.5" stop-color="#a07cff"/>
+      <stop offset="1" stop-color="#ff5fd2"/>
+    </linearGradient>
+    <linearGradient id="tile" x1="0" y1="8" x2="0" y2="248" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#171d2c"/>
+      <stop offset="1" stop-color="#0b0e16"/>
+    </linearGradient>
+    <filter id="glow" x="-30%" y="-30%" width="160%" height="160%">
+      <feGaussianBlur stdDeviation="5" result="blur"/>
+      <feMerge>
+        <feMergeNode in="blur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+  </defs>
+
+  <!-- Kachel -->
+  <rect x="8" y="8" width="240" height="240" rx="56" fill="url(#tile)"/>
+  <rect x="9.5" y="9.5" width="237" height="237" rx="54.5" fill="none" stroke="url(#neon)" stroke-opacity="0.35" stroke-width="3"/>
+
+  <g filter="url(#glow)" fill="none" stroke-linecap="round" stroke-linejoin="round">
+    <!-- Bügel -->
+    <path d="M92 118 V94 a36 36 0 0 1 72 0 V118" stroke="url(#neon)" stroke-width="16"/>
+    <!-- Korpus -->
+    <rect x="60" y="114" width="136" height="98" rx="22" fill="#141925" stroke="url(#neon)" stroke-width="10"/>
+    <!-- Terminal-Prompt >_ -->
+    <path d="M94 146 L116 163 L94 180" stroke="#2ae6ff" stroke-width="11"/>
+    <path d="M128 181 H162" stroke="#ff5fd2" stroke-width="11"/>
+  </g>
+</svg>

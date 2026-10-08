@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="100%" height="100%">
+  <!-- SSH-Vault – vereinfachte Variante für 16–32 px: kein Glow, kräftige Flächen,
+       Prompt nur als Chevron, damit das Motiv klein lesbar bleibt. -->
+  <defs>
+    <linearGradient id="neon" x1="40" y1="24" x2="216" y2="232" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#2ae6ff"/>
+      <stop offset="0.5" stop-color="#a07cff"/>
+      <stop offset="1" stop-color="#ff5fd2"/>
+    </linearGradient>
+  </defs>
+
+  <rect x="0" y="0" width="256" height="256" rx="52" fill="#0b0e16"/>
+  <!-- Bügel -->
+  <path d="M86 122 V90 a42 42 0 0 1 84 0 V122" fill="none" stroke="url(#neon)" stroke-width="26" stroke-linecap="round"/>
+  <!-- Korpus als volle Fläche -->
+  <rect x="44" y="110" width="168" height="118" rx="26" fill="url(#neon)"/>
+  <!-- Prompt-Chevron, ausgespart -->
+  <path d="M100 142 L130 169 L100 196" fill="none" stroke="#0b0e16" stroke-width="20" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>
